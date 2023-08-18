@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  /* Style for the sign-in and log-in buttons */
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+  .auth-button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #666;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .auth-button:hover {
+    background-color: #555;
+  }
+  nav {
+    display: flex;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  nav a {
+    margin: 0;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+    box-shadow: none;
+    border-radius: 10px 10px 0 0;
+  }
+  nav a.active,
+  nav a:hover {
+    color: #666;
+    background-color: inherit;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.5);
+  }
+  .content {
+    padding: 0;
+    border: none;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #eee;
+  }
+  .tab-content {
+    display: none;
+    margin: 0;
+    padding: 20px;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* Apply background colors for each tab */
+  #tab1 {
+    background-color: yellow;
+  }
+  #tab2 {
+    background-color: green;
+  }
+  #tab3 {
+    background-color: red;
+  }
+  #tab4 {
+    background-color: rgb(34, 0, 255);
+  }
+
+  /* Styles for active tabs */
+  nav a.active[href="#front"],
+  nav a:hover[href="#front"] {
+    color: #666;
+    background-color: #eee;
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.1);
+  }
+  nav a.active[href="#tab1"],
+  nav a:hover[href="#tab1"] {
+    color: #666;
+    background-color: yellow;
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.1);
+  }
+  nav a.active[href="#tab2"],
+  nav a:hover[href="#tab2"] {
+    color: #666;
+    background-color: green;
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.1);
+  }
+  nav a.active[href="#tab3"],
+  nav a:hover[href="#tab3"] {
+    color: #666;
+    background-color: red;
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.1);
+  }
+  nav a.active[href="#tab4"],
+  nav a:hover[href="#tab4"] {
+    color: #666;
+    background-color: rgb(34, 0, 255);
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.1);
+  }
+  /* Hover effect for all tabs */
+nav a:hover {
+  background-color: #ddd; /* Change this to the desired hover color */
+  box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.1);
+}
+</style>
+</head>
+<body>
+     <header>
+          <h1>Testing this design</h1>
+          <div class="auth-buttons">
+            <a href="#" class="auth-button">Sign In</a>
+            <a href="#" class="auth-button">Log In</a>
+          </div>
+        </header>
+  <nav>
+    <a href="#front" class="active">Home</a>
+    <a href="#tab1">Product Type 1</a>
+    <a href="#tab2">Product Type 2</a>
+    <a href="#tab3">Product Type 3</a>
+    <a href="#tab4">Product Type 4</a>
+
+  </nav>
+  <div class="content">
+    <div class="tab-content active" id="front">
+      <h2>Front Page Content</h2>
+      <p>This is the content of the front page.</p>
+    </div>
+    <div class="tab-content" id="tab1">
+      <h2>Tab 1 Content</h2>
+      <p>This is the content of Tab 1.</p>
+    </div>
+    <div class="tab-content" id="tab2">
+      <h2>Tab 2 Content</h2>
+      <p>This is the content of Tab 2.</p>
+    </div>
+    <div class="tab-content" id="tab3">
+      <h2>Tab 3 Content</h2>
+      <p>This is the content of Tab 3.</p>
+    </div>
+    <div class="tab-content" id="tab4">
+     <h2>Tab 4 Content</h2>
+     <p>This is the content of Tab 4.</p>
+   </div>
+  </div>
+  <footer>
+    <p>Project-3 Testing</p>
+  </footer>
+  <script>
+    const tabLinks = document.querySelectorAll('nav a');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        tabLinks.forEach(l => l.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        const targetTabId = link.getAttribute('href');
+        link.classList.add('active');
+        document.querySelector(targetTabId).classList.add('active');
+
+        if (targetTabId !== '#front') {
+          document.querySelector('#front').classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
