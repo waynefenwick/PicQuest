@@ -166,13 +166,14 @@
 
 
 <body>
-     <header>
-          <h1>Testing this design</h1>
-          <div class="auth-buttons">
-            <a href="#" class="auth-button">Sign Up</a>
-            <a href="#" class="auth-button">Log In</a>
-          </div>
-        </header>
+  <header>
+    <h1>Testing this design</h1>
+    <div class="auth-buttons">
+      <a href="#" class="auth-button">Sign Up</a>
+      <a href="#" class="auth-button">Log In</a>
+    </div>
+  </header>
+
   <nav>
     <a href="#front" class="active">Home</a>
     <a href="#tab1">Product Type 1</a>
@@ -195,18 +196,21 @@
       <h2>Product Type 1 Content</h2>
       <p>This is the content of Product 1.</p>
     </div>
+
     <div class="tab-content" id="tab2">
       <h2>Product Type 2 Content</h2>
       <p>This is the content of Product 2.</p>
     </div>
+
     <div class="tab-content" id="tab3">
       <h2>Product Type 3 Content</h2>
       <p>This is the content of Product 3.</p>
     </div>
+
     <div class="tab-content" id="tab4">
-     <h2>Product Type 4 Content</h2>
-     <p>This is the content of Product 4.</p>
-   </div>
+      <h2>Product Type 4 Content</h2>
+      <p>This is the content of Product 4.</p>
+    </div>
   </div>
 
 
@@ -214,27 +218,46 @@
     <p>Project-3 Testing</p>
   </footer>
 
-
   <script>
     const tabLinks = document.querySelectorAll('nav a');
     const tabContents = document.querySelectorAll('.tab-content');
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
 
+    // Function to show a specific tab
+    function showTab(tabId) {
+      tabLinks.forEach(link => link.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      document.querySelector(`[href="${tabId}"]`).classList.add('active');
+      document.querySelector(tabId).classList.add('active');
+    }
+
+    // Event listener for navigation links
     tabLinks.forEach(link => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
+        showTab(link.getAttribute('href'));
+      });
+    });
 
-        tabLinks.forEach(l => l.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-
-        const targetTabId = link.getAttribute('href');
-        link.classList.add('active');
-        document.querySelector(targetTabId).classList.add('active');
-
-        if (targetTabId !== '#front') {
-          document.querySelector('#front').classList.remove('active');
+    // Event listener for search button
+    searchButton.addEventListener('click', () => {
+      const searchQuery = searchInput.value.toLowerCase();
+      
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+        if (content.id === 'front') {
+          content.classList.add('active');
+        } else {
+          const contentText = content.textContent.toLowerCase();
+          if (contentText.includes(searchQuery)) {
+            content.classList.add('active');
+          }
         }
       });
     });
+
   </script>
 </body>
 </html>
