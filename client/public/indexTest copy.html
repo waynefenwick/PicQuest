@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="indexTest copy.css">
+    <title>Your Webpage</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#home" class="active">Home</a>
+    <a href="#tab1">People</a>
+    <a href="#tab2">Animals</a>
+    <a href="#tab3">Nature</a>
+    <a href="#tab4">Oceans</a>
+    <a href="#tab5">Cities</a>
+    <a href="#tab6">Unusual</a>
+    <a href="#tab7">Relaxing</a>
+    <div class="login-buttons-container">
+        <button class="login-button">Log In</button>
+        <button class="signup-button">Sign Up</button>
+    </div>
+</nav>
+
+    <div class="main-container">
+      <div id="home" class="section">
+        <div class="left-column">
+          <b><i><p  class="welcome">Welcome to PicQuest!</p></i></b>
+          <p class="regular-p">&nbsp;&nbsp;You're out on a quest searching great pics for your project</p>
+          <p class="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You've arrived at the right site!</p>
+          <p class="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for just the right pic you are wanting...find it...and download it</p>
+          <p class="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add your own professional pics</p>
+          <p class="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enjoy your PicQuest!</p>
+          <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div id="tab1" class="section">
+        <p>People Content</p>
+      </div>
+      <div id="tab2" class="section">
+          <!-- Content for the Animals section -->
+      </div>
+      <div id="tab3" class="section">
+          <!-- Content for the Nature section -->
+      </div>
+      <div id="tab4" class="section">
+          <!-- Content for the Oceans section -->
+      </div>
+      <div id="tab5" class="section">
+          <!-- Content for the Cities section -->
+      </div>
+      <div id="tab6" class="section">
+          <!-- Content for the Unusual section -->
+      </div>
+      <div id="tab7" class="section">
+          <!-- Content for the Relaxing section -->
+      </div>
+  </div>
+
+    <footer id="footer-container">
+        <p>&copy; 2023 Project-3. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const navLinks = document.querySelectorAll(".navbar a");
+          const sections = document.querySelectorAll(".section");
+      
+          navLinks.forEach(link => {
+              link.addEventListener("click", function(event) {
+                  event.preventDefault();
+      
+                  navLinks.forEach(navLink => {
+                      navLink.classList.remove("active");
+                  });
+      
+                  link.classList.add("active");
+      
+                  const targetSectionId = link.getAttribute("href").substring(1);
+      
+                  sections.forEach(section => {
+                      if (section.id === targetSectionId) {
+                          section.style.display = "block";
+                      } else {
+                          section.style.display = "none";
+                      }
+                  });
+              });
+          });
+      
+          // Show the initial active section (Home)
+          document.querySelector(".active").click();
+      });
+      </script>
+      
+      
+      
+</body>
+</html>
