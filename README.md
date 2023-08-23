@@ -106,4 +106,5 @@ Technologies used
 - Md Mamatajur Rashed [GitHub](https://github.com/mdRashed30/)
 - Melissa Dorna[GitHub](https://github.com/waynefenwick/)
 - Jason Cano [GitHub](https://github.com/waynefenwick/)
+- Santiago Rodriguez [GitHub](https://github.com/waynefenwick/)
 
