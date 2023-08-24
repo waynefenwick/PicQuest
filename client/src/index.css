@@ -107,36 +107,36 @@ body, ul {
 }
 
 #home {
-  background-image: url('../src/media/homepage.png');
+  background-image: url('./Media/homepage.png');
 
 }
 
 #tab1 {
-  background-image: url('../src/media/people.png');
+  background-image: url('./Media/people.png');
 }
 
 #tab2 {
-  background-image: url('../src/media/cat.png');
+  background-image: url('./Media/cat.png');
 }
 
 #tab3 {
-  background-image: url('../src/media/lake.png');
+  background-image: url('./Media/lake.png');
 }
 
 #tab4 {
-background-image: url('../src/media/people.png');
+background-image: url('./Media/people.png');
 }
 
 #tab5 {
-background-image: url('../src/media/cat.png');
+background-image: url('./Media/cat.png');
 }
 
 #tab6 {
-background-image: url('../src/media/lake.png');
+background-image: url('./Media/lake.png');
 }
 
 #tab7 {
-background-image: url('../src/media/lake.png');
+background-image: url('./Media/lake.png');
 }
 
 .left-column {

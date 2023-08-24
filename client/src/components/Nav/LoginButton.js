@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from './Popup'; // Import the Popup component
+import Popup from '../Popup/Popup'; // Import the Popup component
 
 function LoginButton() {
   return (

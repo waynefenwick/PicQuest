@@ -9,10 +9,10 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Nav from './components/Nav'; // Import the Navbar component
-import Home from './components/Home'; // Import the Home component
-import Tabs from './components/Tab'; // Import the Tabs component
-import Footer from './components/Footer'; // Import the Footer component
-import Popup from './components/Popup'; // Import the Popup component
+import Home from './components/Home/Home'; // Import the Home component
+import Tabs from './components/Tabs/Tabs'; // Import the Tabs component
+import Footer from './components/Footer/Footer'; // Import the Footer component
+import Popup from './components/Popup/Popup'; // Import the Popup component
 import Auth from './utils/auth'; // Import your Auth utility
 
 // Set up Apollo Client's HTTP link and authentication headers
