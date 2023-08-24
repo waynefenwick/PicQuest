@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+:root {
+  --yellow: rgb(255, 253, 186);
+  --green: rgb(212, 255, 209);
+  --red: rgb(255, 198, 198);
+  --blue: rgb(198, 208, 255);
+  --black: rgb(0, 0, 0);
+}
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Sign-in and log-in buttons */
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+  .auth-button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #666;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .auth-button:hover {
+    background-color: #555;
+  }
+
+    /* Navbar */
+  nav {
+    display: flex;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  nav a {
+    margin: 0;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .content {
+    padding: 0;
+    border: none;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.25);
+    background-color: #eee;
+  }
+  .tab-content {
+    display: none;
+    margin: 0;
+    padding: 20px;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* Apply background colors for each tab */
+  #tab1 {
+    background-color: var(--yellow);
+  }
+  #tab2 {
+    background-color: var(--green);
+  }
+  #tab3 {
+    background-color: var(--red);
+  }
+  #tab4 {
+    background-color: var(--blue);
+  }
+
+  /* Styles for active tabs */
+  nav a.active[href="#front"],
+  nav a:hover[href="#front"] {
+    color: #000000;
+    background-color: #eee;
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.25);
+  }
+  nav a.active[href="#tab1"],
+  nav a:hover[href="#tab1"] {
+    color: #000000;
+    background-color: var(--yellow);
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.25);
+  }
+  nav a.active[href="#tab2"],
+  nav a:hover[href="#tab2"] {
+    color: #000000;
+    background-color: var(--green);
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.25);
+  }
+  nav a.active[href="#tab3"],
+  nav a:hover[href="#tab3"] {
+    color: #000000;
+    background-color: var(--red);
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.25);
+  }
+  nav a.active[href="#tab4"],
+  nav a:hover[href="#tab4"] {
+    color: #000000;
+    background-color:var(--blue);
+    box-shadow: 5px -4px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  .search-bar {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  max-width: 50%;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #666;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #555;
+}
+
+</style>
+</head>
+
+
+<body>
+  <header>
+    <h1>Testing this design</h1>
+    <div class="auth-buttons">
+      <a href="#" class="auth-button">Sign Up</a>
+      <a href="#" class="auth-button">Log In</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#front" class="active">Home</a>
+    <a href="#tab1">Product Type 1</a>
+    <a href="#tab2">Product Type 2</a>
+    <a href="#tab3">Product Type 3</a>
+    <a href="#tab4">Product Type 4</a>
+  </nav>
+
+  <div class="content">
+    <div class="tab-content active" id="front">
+      <h2>Home Page Content</h2>
+      <p>This is the content of the home page.</p>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton">Search</button>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab1">
+      <h2>Product Type 1 Content</h2>
+      <p>This is the content of Product 1.</p>
+    </div>
+
+    <div class="tab-content" id="tab2">
+      <h2>Product Type 2 Content</h2>
+      <p>This is the content of Product 2.</p>
+    </div>
+
+    <div class="tab-content" id="tab3">
+      <h2>Product Type 3 Content</h2>
+      <p>This is the content of Product 3.</p>
+    </div>
+
+    <div class="tab-content" id="tab4">
+      <h2>Product Type 4 Content</h2>
+      <p>This is the content of Product 4.</p>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>Project-3 Testing</p>
+  </footer>
+
+  <script>
+    const tabLinks = document.querySelectorAll('nav a');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    // Function to show a specific tab
+    function showTab(tabId) {
+      tabLinks.forEach(link => link.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      document.querySelector(`[href="${tabId}"]`).classList.add('active');
+      document.querySelector(tabId).classList.add('active');
+    }
+
+    // Event listener for navigation links
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showTab(link.getAttribute('href'));
+      });
+    });
+
+    // Event listener for search button
+    searchButton.addEventListener('click', () => {
+      const searchQuery = searchInput.value.toLowerCase();
+      
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+        if (content.id === 'front') {
+          content.classList.add('active');
+        } else {
+          const contentText = content.textContent.toLowerCase();
+          if (contentText.includes(searchQuery)) {
+            content.classList.add('active');
+          }
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
