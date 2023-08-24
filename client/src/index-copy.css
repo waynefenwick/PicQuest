@@ -10,6 +10,8 @@
   --darkBlue: rgb(3, 0, 80);
   --lightBlue: rgb(212, 213, 237);
   --orange: orange;
+  --white: white;
+  --gray: #313131;
 }
 
 /* Reset some default styles */
@@ -21,25 +23,25 @@ body, ul {
 
 /* Style the navigation bar */
 .navbar {
-  background-color: #333;
-  color: white;
+  background-color: var(--gray);
+  color: var(--white);
   padding: 1rem;
-  display: flex; /* Add flex display to align items */
-  justify-content: space-between; /* Spread items along the horizontal axis */
-  align-items: center; /* Align items vertically in the center */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar ul {
   list-style: none;
-  display: flex; /* Use flexbox to align items */
-  justify-content: flex-start; /* Align items to the left */
-  gap: 20px; /* Add spacing between items */
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .navbar a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
-  margin: 0px 20px 0px 20px; /* Add margin to the bottom of each item */
+  margin: 0px 20px 0px 20px;
 }
 
 /* Style the active navigation item */
@@ -84,7 +86,7 @@ body, ul {
   text-shadow: 1px 1px 4px rgb(255, 255, 255);
 }
 
-/* Add more specific selectors for the tab sections */
+
 #home,
 #tab1,
 #tab2,
@@ -144,8 +146,8 @@ background-image: url('../src/media/lake.png');
   flex-wrap: nowrap;
   width: ;
   padding: 20px;
-  color: white;
-  box-sizing: border-box; /* Include padding and border in the width calculation */
+  color: var(--white);
+  box-sizing: border-box;
 }
 
 .search-bar {
@@ -167,17 +169,17 @@ background-image: url('../src/media/lake.png');
 .signup-button {
   background-color: var(--orange);
   border: none;
-  color: white;
+  color: var(--white);
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  margin-left: 10px; /* Apply margin to all buttons */
+  margin-left: 10px;
 }
 
 /* Apply flexbox to the container */
 .login-buttons-container {
-  margin-left: auto; /* Move the buttons to the right */
+  margin-left: auto;
   display: flex;
   align-items: center;
 }
@@ -218,7 +220,7 @@ background-image: url('../src/media/lake.png');
 }
 
 .popup-content {
-  background-color: white;
+  background-color: var(--white);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -240,7 +242,7 @@ background-image: url('../src/media/lake.png');
 
 .popup button {
   background-color: var(--orange);
-  color: white;
+  color: var(--white);
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
