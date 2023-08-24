@@ -1,58 +1,31 @@
-import React from "react";
-import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import React from 'react';
+import NavLink from './NavLink';
+import LoginButton from './LoginButton';
+import SignupButton from './SignupButton';
+import Auth from '../../utils/auth'; // Import your Auth utility
+import { Link } from 'react-router-dom'; // Import React Router's Link component
 
-function Nav() {
-
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
-      );
-    } else {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      );
-    }
-  }
+function Navbar() {
+  const loggedIn = Auth.loggedIn();
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          -Shop-Shop
-        </Link>
-      </h1>
-
-      <nav>
-        {showNavigation()}
-      </nav>
-    </header>
+    <nav className="navbar">
+      <NavLink href="#home">Home</NavLink>
+      {/* Add NavLink components for other sections */}
+      <div className="login-buttons-container">
+        {loggedIn ? (
+          // If the user is logged in, show a link to a profile or dashboard
+          <Link to="/profile">Profile</Link>
+        ) : (
+          // If not logged in, show login and signup buttons
+          <>
+            <LoginButton />
+            <SignupButton />
+          </>
+        )}
+      </div>
+    </nav>
   );
 }
 
-export default Nav;
+export default Navbar;
