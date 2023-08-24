@@ -8,22 +8,20 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Home from './pages/Home';
-import Detail from './pages/Detail';
-import NoMatch from './pages/NoMatch';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Nav from './components/Nav';
-import { StoreProvider } from './utils/GlobalState';
-import Success from './pages/Success';
-import OrderHistory from './pages/OrderHistory';
+import Nav from './components/Nav'; // Import the Navbar component
+import Home from './components/Home/Home'; // Import the Home component
+import Tabs from './components/Tabs/Tabs'; // Import the Tabs component
+import Footer from './components/Footer/Footer'; // Import the Footer component
+import Popup from './components/Popup/Popup'; // Import the Popup component
+import Auth from './utils/auth'; // Import your Auth utility
 
+// Set up Apollo Client's HTTP link and authentication headers
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = Auth.getToken(); // Replace with your token retrieval logic
   return {
     headers: {
       ...headers,
@@ -39,45 +37,20 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <StoreProvider>
-            <Nav />
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/success" 
-                element={<Success />} 
-              />
-              <Route 
-                path="/orderHistory" 
-                element={<OrderHistory />} 
-              />
-              <Route 
-                path="/products/:id" 
-                element={<Detail />} 
-              />
-              <Route
-                path="*" 
-                element={<NoMatch />} 
-              />
-            </Routes>
-          </StoreProvider>
-        </div>
-      </Router>
-    </ApolloProvider>
+    <div className="app">
+      <ApolloProvider client={client}>
+        <Router>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tabs" element={<Tabs />} />
+            {/* Add more routes for other components */}
+          </Routes>
+          <Popup /> {/* Render the Popup component */}
+          <Footer /> {/* Render the Footer component */}
+        </Router>
+      </ApolloProvider>
+    </div>
   );
 }
 

@@ -1,17 +1,16 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import HomeContent from '../components/Home';
+import Tabs from '../components/Tab';
 import Footer from '../components/Footer';
 
-function Home() {
+function TabPage() {
   return (
     <div>
       <Nav />
-      <HomeContent />
+      <Tabs />
       <Footer />
     </div>
   );
 }
 
-export default Home;
-
+export default TabPage;
