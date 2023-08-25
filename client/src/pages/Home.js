@@ -1,14 +1,15 @@
+// Pages/Home.js
 import React from 'react';
-import Nav from '../components/Nav';
 import HomeContent from '../components/Home';
-import Footer from '../components/Footer';
+import Popup from '../components/Popup';
+import Buttons from '../components/Buttons'; // Corrected import path for Buttons
 
 function Home() {
   return (
     <div>
-      <Nav />
       <HomeContent />
-      <Footer />
+      <Popup />
+      <Buttons /> {/* Include the Buttons component */}
     </div>
   );
 }
