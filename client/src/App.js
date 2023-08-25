@@ -10,8 +10,6 @@ import { setContext } from '@apollo/client/link/context';
 
 import Nav from './components/Nav/NavLink';
 import Home from './components/Home/Home';
-import Login from './components/Buttons/LoginButton';
-import Signup from './components/Buttons/SignupButton';
 import Popup from './components/Popup/Popup';
 import Footer from './components/Footer/Footer';
 import Animals from './components/Tabs/Animals';
@@ -58,8 +56,6 @@ function App() {
             <Route path="/tab5" element={<Cities />} />
             <Route path="/tab6" element={<Unusual />} />
             <Route path="/tab7" element={<Relaxing />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
           </Routes>
           <Popup />
           <Footer />
