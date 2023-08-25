@@ -44,6 +44,10 @@ body, ul {
   margin: 0px 20px 0px 20px;
 }
 
+.navbar a:hover {
+  color: var(--orange);
+}
+
 /* Style the active navigation item */
 .navbar a.active {
   padding-bottom: 10px;
@@ -83,7 +87,7 @@ body, ul {
   color: var(--black);
   text-indent: 20px;
   font-weight: bold;
-  text-shadow: 1px 1px 4px rgb(255, 255, 255);
+  text-shadow: 1px 1px 4px var(--orange);
 }
 
 
@@ -108,7 +112,6 @@ body, ul {
 
 #home {
   background-image: url('./Media/homepage.png');
-
 }
 
 #tab1 {
