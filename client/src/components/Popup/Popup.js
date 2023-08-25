@@ -11,6 +11,7 @@ function Popup({ id, buttonText, children }) {
     setIsVisible(false);
   };
 
+  // Define the popup content directly in each condition
   let popupContent;
   if (id === 'loginPopup') {
     popupContent = (
@@ -21,7 +22,7 @@ function Popup({ id, buttonText, children }) {
           <input type="password" placeholder="Password" />
           <button type="submit">Log In</button>
         </form>
-        <span className="close" onClick={() => closePopup('loginPopup')}>
+        <span className="close" onClick={closePopup}> {/* Remove parameter from closePopup */}
           &times;
         </span>
       </div>
@@ -36,7 +37,7 @@ function Popup({ id, buttonText, children }) {
           <input type="password" placeholder="Password" />
           <button type="submit">Sign Up</button>
         </form>
-        <span className="close" onClick={() => closePopup('signupPopup')}>
+        <span className="close" onClick={closePopup}> {/* Remove parameter from closePopup */}
           &times;
         </span>
       </div>
