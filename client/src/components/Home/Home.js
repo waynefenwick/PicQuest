@@ -3,7 +3,6 @@ import React from 'react';
 function Home() {
      return (
           <div id="home" className="section">
-               <div className="left-column">
                <b><i><p className="welcome">Welcome to PicQuest!</p></i></b>
                <p className="regular-p">&nbsp;&nbsp;You're out on a quest searching great pics for your project</p>
                <p className="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You've arrived at the right site!</p>
@@ -13,7 +12,6 @@ function Home() {
                <div className="search-bar">
                     <input type="text" placeholder="Search..." />
                     <button>Search</button>
-               </div>
                </div>
           </div>
      );
