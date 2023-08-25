@@ -72,7 +72,7 @@ body, ul {
   width: 45%;
   border-radius: 15px;
   font-size: 45px;
-  margin: 30px 0px 50px 30px;
+  margin: 20px 0px 50px 30px;
   color: var(--darkBlue);
   align-items: center;
 }
@@ -124,19 +124,32 @@ body, ul {
 }
 
 #tab4 {
-background-image: url('./Media/people.png');
+background-image: url('./Media/ocean.png');
 }
 
 #tab5 {
-background-image: url('./Media/cat.png');
+background-image: url('./Media/city.png');
 }
 
 #tab6 {
-background-image: url('./Media/lake.png');
+background-image: url('./Media/unusual.png');
 }
 
 #tab7 {
-background-image: url('./Media/lake.png');
+background-image: url('./Media/relax.png');
+}
+
+.section {
+  display: flex;
+  font-size: 16px;
+  color: blue;
+  border: 1px solid #ccc;
+  background-color: aliceblue;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
 }
 
 .left-column {
@@ -144,7 +157,7 @@ background-image: url('./Media/lake.png');
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  width: ;
+  width: 100%;
   padding: 20px;
   color: var(--white);
   box-sizing: border-box;
@@ -184,7 +197,9 @@ background-image: url('./Media/lake.png');
   align-items: center;
 }
 
-.search-bar button, .login-button, .signup-button {
+.search-bar button,
+.login-button,
+.signup-button {
   margin: 0px 20px 0px 20px;
   width: 80px;
 }
