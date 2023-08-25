@@ -1,13 +1,13 @@
 // Pages/Home.js
 import React from 'react';
 import HomeContent from '../components/Home';
-import Popup from '../components/Popup';
+import NavLink from '../components/NavLink';
 
 function Home() {
   return (
     <div>
       <HomeContent />
-      <Popup />
+      <NavLink />
     </div>
   );
 }

@@ -68,13 +68,13 @@ body, ul {
   padding: 40px;
   background-color: #ffffffda;
   border: 1px solid var(--darkBlue);
-  justify-content: center;
-  width: 45%;
+  width: 40%;
   border-radius: 15px;
   font-size: 45px;
-  margin: 20px 0px 50px 30px;
+  margin: 100px 0px 50px 65px;
   color: var(--darkBlue);
   align-items: center;
+  justify-content: flex-start;
 }
 
 .regular-p {
@@ -140,27 +140,8 @@ background-image: url('./Media/relax.png');
 }
 
 .section {
-  display: flex;
   font-size: 16px;
   color: blue;
-  border: 1px solid #ccc;
-  background-color: aliceblue;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-}
-
-.left-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  width: 100%;
-  padding: 20px;
-  color: var(--white);
-  box-sizing: border-box;
 }
 
 .search-bar {
