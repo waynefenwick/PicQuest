@@ -41,7 +41,7 @@ body, ul {
 .navbar a {
   color: var(--white);
   text-decoration: none;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 10px 0px 10px;
 }
 
 .navbar a:hover {
@@ -75,7 +75,7 @@ body, ul {
   width: 40%;
   border-radius: 15px;
   font-size: 45px;
-  margin: 100px 0px 50px 65px;
+  margin: 120px 0px 50px 65px;
   color: var(--darkBlue);
   align-items: center;
   justify-content: flex-start;
@@ -148,17 +148,16 @@ background-image: url('./Media/relax.png');
 }
 
 .search-bar {
-  margin: 50px 0px 0px 5ch;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 .search-bar input {
   padding: 5px;
   border: none;
   border-radius: 4px;
-  width: 30%;
+  width: 50%;
 }
 
 .search-bar button,
@@ -176,9 +175,9 @@ background-image: url('./Media/relax.png');
 
 /* Apply flexbox to the container */
 .login-buttons-container {
-  margin-left: auto;
   display: flex;
   align-items: center;
+  justify-content: right;
 }
 
 .search-bar button,

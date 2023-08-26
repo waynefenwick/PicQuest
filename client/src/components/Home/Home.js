@@ -9,10 +9,7 @@ function Home() {
                <p className="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for just the right pic you are wanting...find it...and download it</p>
                <p className="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add your own professional pics</p>
                <p className="regular-p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enjoy your PicQuest!</p>
-               <div className="search-bar">
-                    <input type="text" placeholder="Search..." />
-                    <button>Search</button>
-               </div>
+
           </div>
      );
 }
