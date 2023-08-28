@@ -1,26 +1,36 @@
 import React from 'react';
+import peopleImage1 from '../../Media/People/people.png';
+import peopleImage2 from '../../Media/People/cyclists.png';
+import peopleImage3 from '../../Media/People/cyclists.png';
 
-function People () {
+
+
+const People = () => {
   return (
-<div id="people" className="photos mobile">
-  <div className="box">
-    <img src="path_to_image_2.jpg" alt="Image 2" />
-  </div>
-  <div className="box">
-    <img src="path_to_image_2.jpg" alt="Image 2" />
-  </div>
-  <div className="box">
-    <img src="path_to_image_3.jpg" alt="Image 3" />
-  </div>
-  <div className="box">
-    <img src="path_to_image_4.jpg" alt="Image 4" />
-  </div>
-  <div className="box">
-    <img src="path_to_image_5.jpg" alt="Image 5" />
-  </div>
-</div>
-
+    <div id="people" className="section">
+      <div className="box">
+        <img src={peopleImage1} className="photo" alt="Image 1" />
+        <a href={peopleImage1} download className="download-option">
+          Download
+        </a>
+      </div>
+      <div className="box">
+        <img src={peopleImage2} className="photo" alt="Image 2" />
+        <a href={peopleImage2} download className="download-option">
+          Download
+        </a>
+      </div>
+      <div className="box">
+        <img src={peopleImage3} className="photo" alt="Image 3" />
+        <a href={peopleImage3} download className="download-option">
+          Download
+        </a>
+      </div>
+      {/* ... Other boxes */}
+    </div>
   );
-}
+};
 
 export default People;
+
+

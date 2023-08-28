@@ -33,6 +33,7 @@ body, ul {
   overflow-x: auto;
   white-space: nowrap;
   width: auto;
+  z-index: 1;
 }
 
 #navbar {
@@ -94,33 +95,29 @@ body, ul {
   padding: 3px;
 }
 
-
-/* Add a media query for screens with a max width of 740px */
 @media (max-width: 740px) {
   /* Flex the container and its children */
   #navbar-container {
+    position: fixed;
     display: flex;
-    flex-direction: column;
-    width: auto;
+    flex-direction: row;
+    align-items: center; /* Center content horizontally */
+    justify-content: center;
+    top: 0;
+    width: 100%;
+    height: 2%; /* Adjust the height as needed */
+    overflow-x: auto; /* Enable horizontal scrolling */
   }
 
-  /* Flex the navbar and navbar-buttons sections */
+  /* Flex the navbar section */
   #navbar {
     position: relative; /* Add relative positioning */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
-  }
-
-  #navbar-buttons {
-    position: absolute; /* Add absolute positioning */
-    top: 45px; /* Adjust the positioning as needed */
-    left: 0; /* Adjust the positioning as needed */
-    background-color: var(--gray); /* Optional: Add a background color */
-    padding: 1rem; /* Optional: Add padding for spacing */
-    width: auto; /* Take full width */
+    overflow-x: scroll; /* Enable horizontal scrolling for the navbar */
+    z-index: 2; /* Place it above the navbar buttons */
   }
 
   .navbar-links {
@@ -129,18 +126,35 @@ body, ul {
     gap: 10px;
   }
 
-  #navbar-overlay {
+  /* Fixed position for navbar buttons */
+  #navbar-buttons {
     position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center content vertically */
+    top: 30px; /* Adjust the positioning as needed */
+    left: 0;
+    right: 0; /* Make sure the buttons span the entire width */
+    padding: 1rem;
+    background-color: var(--gray); /* Optional: Add a background color */
+    z-index: 1; /* Place it below the scrolling navbar */
+  }
+
+  /* Overlay for navbar */
+  #navbar-overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 5%;
-    pointer-events: none; /* Make it non-interactable */
-    z-index: 1; /* Place it above the navbar */
+    height: 10%;
+    pointer-events: none;
+    z-index: 1; /* Place it above the scrolling navbar */
     background: linear-gradient(to right, var(--gray) 0%, var(--gray) 0%, transparent 5%, transparent 85%, var(--gray) 100%, var(--gray) 100%);
   }
-  
 }
+
+
+
 
 .navbar-search {
   display: flex;
@@ -157,30 +171,15 @@ body, ul {
 
 }
 
-.login-button {
-  background-color: var(--orange);
-  border: none;
-  color: var(--white);
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  margin: 0px 2.5px 0px 2.5px;
-  width: 80px;
+.navbar-login-signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.signup-button {
-  background-color: var(--orange);
-  border: none;
-  color: var(--white);
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  margin: 0px 2.5px 0px 2.5px;
-  width: 80px;
-}
-
+.login-button,
+.logout-button,
+.signup-button,
 .search-button {
   background-color: var(--orange);
   border: none;
@@ -193,15 +192,8 @@ body, ul {
   width: 80px;
 }
 
-
-/* Apply flexbox to the container */
-.navbar-login-signup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .login-button:hover,
+.logout-btton:hover,
 .signup-button:hover,
 .search-button:hover {
   background-color: var(--darkBlue);
@@ -263,11 +255,6 @@ body, ul {
   cursor: pointer;
 }
 
-.welcome p {
-  margin: 0;
-}
-
-/* Common styles for .welcome */
 .welcome {
   display: flex;
   flex-wrap: wrap;
@@ -282,6 +269,10 @@ body, ul {
   color: var(--darkBlue);
   align-items: center;
   justify-content: flex-start;
+}
+
+.welcome p {
+  margin: 0;
 }
 
 /* Add staggered spacing using ::before pseudo-element */
@@ -315,11 +306,8 @@ body, ul {
   text-shadow: 1px 1px 4px var(--orange);
 }
 
-
-/* Media query styles */
 @media (max-width: 740px) {
   .welcome.mobile {
-    /* Mobile specific styles */
     display: flex;
     justify-content: center;
     align-content: center;
@@ -361,34 +349,73 @@ body, ul {
 
 #people {
   display: flex;
-  margin: 75px 20px 20px 20px
+  flex-direction: row;
+
+  margin: 20px 20px 20px 20px;
 }
 
-#people .box {
-  flex: 1;
-  border: 1px solid var(--red);
-  background-color: var(--yellow);
-  margin: 20px;
-  height: auto;
-  width: auto;
+.photo {
+  max-width: 40%; /* Constrain the width */
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 10px;
+}
+
+.download-option {
+  color: var(--darkBlue);
+  padding: 10px;
+  border-radius: 0;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.download-option:hover {
+  background-color: var(--orange);
 }
 
 @media (max-width: 740px) {
-  .photos.mobile {
+
+  #people {
     display: flex;
     flex-direction: column;
+    margin: 90px 20px 20px 20px;
+  }
+
+  .photo {
+    max-width: 100%; /* Constrain the width */
+    flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 50px;
+    border-radius: 10px;
+  }
+
+  .download-option {
+    color: var(--darkBlue);
+    padding: 10px;
+    border-radius: 0;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .download-option:hover {
+    background-color: var(--orange);
+  }
+
+  .box {
+    margin: 10px
   }
 }
 
-/* Style the footer */
+
+/* Footer */
 #footer-container {
   background-color: var(--orange);
   color: var(--darkBlue);
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
-
