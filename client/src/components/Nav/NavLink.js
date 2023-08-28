@@ -63,9 +63,7 @@ function NavLink() {
 
   return (
     <>
-    
       <div id="navbar-container">
-      <div id="navbar-overlay"></div>         
 
         <section  id="navbar">
           <ul className="navbar-links">
@@ -95,6 +93,8 @@ function NavLink() {
             </li>
           </ul>
         </section>
+
+        <div id="navbar-overlay"></div>         
 
         <section id="navbar-buttons">
           <div className="navbar-search">

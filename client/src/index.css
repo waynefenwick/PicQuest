@@ -14,14 +14,12 @@
   --gray: #313131;
 }
 
-/* Reset some default styles */
 body, ul {
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* Style the navbar container */
 #navbar-container {
   display: flex;
   flex-direction: row;
@@ -96,28 +94,27 @@ body, ul {
 }
 
 @media (max-width: 740px) {
-  /* Flex the container and its children */
   #navbar-container {
     position: fixed;
     display: flex;
     flex-direction: row;
-    align-items: center; /* Center content horizontally */
+    align-items: center;
     justify-content: center;
     top: 0;
     width: 100%;
-    height: 2%; /* Adjust the height as needed */
-    overflow-x: auto; /* Enable horizontal scrolling */
+    height: 2%;
+    overflow-x: auto;
   }
 
-  /* Flex the navbar section */
+
   #navbar {
-    position: relative; /* Add relative positioning */
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    overflow-x: scroll; /* Enable horizontal scrolling for the navbar */
-    z-index: 2; /* Place it above the navbar buttons */
+    overflow-x: scroll; 
+    z-index: 2;
   }
 
   .navbar-links {
@@ -126,35 +123,30 @@ body, ul {
     gap: 10px;
   }
 
-  /* Fixed position for navbar buttons */
   #navbar-buttons {
     position: fixed;
     display: flex;
     flex-direction: row;
-    align-items: center; /* Center content vertically */
-    top: 30px; /* Adjust the positioning as needed */
+    align-items: center;
+    top: 30px;
     left: 0;
-    right: 0; /* Make sure the buttons span the entire width */
+    right: 0;
     padding: 1rem;
-    background-color: var(--gray); /* Optional: Add a background color */
-    z-index: 1; /* Place it below the scrolling navbar */
+    background-color: var(--gray); 
+    z-index: 1;
   }
 
-  /* Overlay for navbar */
   #navbar-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 10%;
+    height: 5%;
     pointer-events: none;
-    z-index: 1; /* Place it above the scrolling navbar */
-    background: linear-gradient(to right, var(--gray) 0%, var(--gray) 0%, transparent 5%, transparent 85%, var(--gray) 100%, var(--gray) 100%);
+    z-index: 2;
+    background: linear-gradient(to right, var(--gray) 0%, rgba(128, 128, 128, 0) 10%, transparent 85%, rgba(128, 128, 128, 0) 95%, var(--gray) 100%);
   }
 }
-
-
-
 
 .navbar-search {
   display: flex;
@@ -265,7 +257,7 @@ body, ul {
   width: 40%;
   border-radius: 15px;
   font-size: 45px;
-  margin: 120px 0px 50px 70px;
+  margin: 120px 0px 50px 65px;
   color: var(--darkBlue);
   align-items: center;
   justify-content: flex-start;
@@ -275,14 +267,13 @@ body, ul {
   margin: 0;
 }
 
-/* Add staggered spacing using ::before pseudo-element */
 .welcome-paragraphs p {
   position: relative;
-  padding-left: 20px; /* Adjust the value as needed */
+  padding-left: 20px;
 }
 
 .welcome-paragraphs p::before {
-  content: '\00a0\00a0'; /* Add non-breaking spaces for spacing */
+  content: '\00a0\00a0';
   position: absolute;
   left: 0;
 }
@@ -295,7 +286,6 @@ body, ul {
   font-weight: bold;
   text-shadow: 1px 1px 4px var(--orange);
 }
-
 
 .regular-p {
   font-size: 25px;
@@ -319,11 +309,11 @@ body, ul {
 
   .welcome-paragraphs p.mobile {
   position: relative;
-  padding-left: 0px; /* Adjust the value as needed */
+  padding-left: 0px;
   }
 
   .regular-p.mobile {
-    text-align: center; /* Center the text content */
+    text-align: center;
     font-size: 20px;
     color: var(--black);
     text-indent: 0;
@@ -333,15 +323,12 @@ body, ul {
     padding: 0;
   }
 
-    /* Remove padding for paragraphs within welcome-paragraphs */
   .welcome-paragraphs p {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 0px 5px 0px 5px;
     margin-top: 25px;
     font-size: large;
   }
 
-  /* Remove pseudo-element for spacing */
   .welcome-paragraphs p::before {
     content: none;
   }
@@ -350,12 +337,11 @@ body, ul {
 #people {
   display: flex;
   flex-direction: row;
-
   margin: 20px 20px 20px 20px;
 }
 
 .photo {
-  max-width: 40%; /* Constrain the width */
+  max-width: 40%;
   flex-direction: column;
   flex-wrap: wrap;
   border-radius: 10px;
@@ -384,7 +370,7 @@ body, ul {
   }
 
   .photo {
-    max-width: 100%; /* Constrain the width */
+    max-width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     border-radius: 10px;
@@ -408,7 +394,6 @@ body, ul {
     margin: 10px
   }
 }
-
 
 /* Footer */
 #footer-container {
