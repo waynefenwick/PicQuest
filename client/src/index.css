@@ -21,75 +21,49 @@ body, ul {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* Style the navigation bar */
-.navbar {
-  background-color: var(--gray);
-  color: var(--white);
-  padding: 1rem;
+/* Style the navbar container */
+#navbar-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--gray);
+  color: var(--white);
+  padding: 15px;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: auto;
 }
 
-.navbar ul {
+#navbar {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+
+}
+.navbar-links {
   list-style: none;
   display: flex;
-  justify-content: flex-start;
   gap: 20px;
 }
 
-.navbar a {
-  color: var(--white);
-  text-decoration: none;
-  margin: 0px 10px 0px 10px;
+.navbar-links li {
+  margin-right: 10px;
 }
 
-.navbar a:hover {
+.navbar-links a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.navbar-links a:hover {
   color: var(--orange);
 }
 
-/* Style the active navigation item */
-.navbar a.active {
-  padding-bottom: 10px;
+.navbar-links a.active {
+  padding-bottom: 2px;
   border-bottom: 2px solid var(--orange);
 }
-
-/* Style the main content area */
-.main-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 0;
-  border: none;
-  width: 100%;
-}
-
-
-.welcome {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 40px;
-  background-color: #ffffffda;
-  border: 1px solid var(--darkBlue);
-  width: 40%;
-  border-radius: 15px;
-  font-size: 45px;
-  margin: 120px 0px 50px 65px;
-  color: var(--darkBlue);
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.regular-p {
-  font-size: 25px;
-  margin: 20px 0 0 35px;
-  color: var(--black);
-  text-indent: 20px;
-  font-weight: bold;
-  text-shadow: 1px 1px 4px var(--orange);
-}
-
 
 #home,
 #tab1,
@@ -114,54 +88,87 @@ body, ul {
   background-image: url('./Media/homepage.png');
 }
 
-#tab1 {
-  background-image: url('./Media/people.png');
+#navbar-buttons {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
 }
 
-#tab2 {
-  background-image: url('./Media/cat.png');
+
+/* Add a media query for screens with a max width of 740px */
+@media (max-width: 740px) {
+  /* Flex the container and its children */
+  #navbar-container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
+
+  /* Flex the navbar and navbar-buttons sections */
+  #navbar {
+    position: relative; /* Add relative positioning */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  #navbar-buttons {
+    position: absolute; /* Add absolute positioning */
+    top: 45px; /* Adjust the positioning as needed */
+    left: 0; /* Adjust the positioning as needed */
+    background-color: var(--gray); /* Optional: Add a background color */
+    padding: 1rem; /* Optional: Add padding for spacing */
+    width: auto; /* Take full width */
+  }
+
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+  }
+
+  #navbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5%;
+    pointer-events: none; /* Make it non-interactable */
+    z-index: 1; /* Place it above the navbar */
+    background: linear-gradient(to right, var(--gray) 0%, var(--gray) 0%, transparent 5%, transparent 85%, var(--gray) 100%, var(--gray) 100%);
+  }
+  
 }
 
-#tab3 {
-  background-image: url('./Media/lake.png');
-}
-
-#tab4 {
-background-image: url('./Media/ocean.png');
-}
-
-#tab5 {
-background-image: url('./Media/city.png');
-}
-
-#tab6 {
-background-image: url('./Media/unusual.png');
-}
-
-#tab7 {
-background-image: url('./Media/relax.png');
-}
-
-.section {
-  font-size: 16px;
-  color: blue;
-}
-
-.search-bar {
+.navbar-search {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
 }
 
-.search-bar input {
+.navbar-search input {
   padding: 5px;
   border: none;
   border-radius: 4px;
   width: 50%;
+  margin: 0px 2.5px 0px 2.5px;
+
 }
 
-.search-bar button,
-.login-button,
+.login-button {
+  background-color: var(--orange);
+  border: none;
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin: 0px 2.5px 0px 2.5px;
+  width: 80px;
+}
+
 .signup-button {
   background-color: var(--orange);
   border: none;
@@ -170,37 +177,34 @@ background-image: url('./Media/relax.png');
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  margin-left: 10px;
+  margin: 0px 2.5px 0px 2.5px;
+  width: 80px;
 }
+
+.search-button {
+  background-color: var(--orange);
+  border: none;
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin: 0px 2.5px 0px 2.5px;
+  width: 80px;
+}
+
 
 /* Apply flexbox to the container */
-.login-buttons-container {
+.navbar-login-signup {
   display: flex;
   align-items: center;
-  justify-content: right;
-}
-
-.search-bar button,
-.login-button,
-.signup-button {
-  margin: 0px 20px 0px 20px;
-  width: 80px;
+  justify-content: center;
 }
 
 .login-button:hover,
 .signup-button:hover,
-.search-bar button:hover {
+.search-button:hover {
   background-color: var(--darkBlue);
-}
-
-/* Style the footer */
-#footer-container {
-  background-color: var(--orange);
-  color: var(--darkBlue);
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 /* Pop-up styles */
@@ -258,3 +262,133 @@ background-image: url('./Media/relax.png');
   font-size: 20px;
   cursor: pointer;
 }
+
+.welcome p {
+  margin: 0;
+}
+
+/* Common styles for .welcome */
+.welcome {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 40px;
+  background-color: #ffffffda;
+  border: 1px solid var(--darkBlue);
+  width: 40%;
+  border-radius: 15px;
+  font-size: 45px;
+  margin: 120px 0px 50px 70px;
+  color: var(--darkBlue);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Add staggered spacing using ::before pseudo-element */
+.welcome-paragraphs p {
+  position: relative;
+  padding-left: 20px; /* Adjust the value as needed */
+}
+
+.welcome-paragraphs p::before {
+  content: '\00a0\00a0'; /* Add non-breaking spaces for spacing */
+  position: absolute;
+  left: 0;
+}
+
+.welcome-paragraphs {
+  font-size: 25px;
+  margin: 20px 0 0 35px;
+  color: var(--black);
+  text-indent: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px var(--orange);
+}
+
+
+.regular-p {
+  font-size: 25px;
+  margin: 20px 0 0 35px;
+  color: var(--black);
+  text-indent: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px var(--orange);
+}
+
+
+/* Media query styles */
+@media (max-width: 740px) {
+  .welcome.mobile {
+    /* Mobile specific styles */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 150px;
+    font-size: 30px;
+  }
+
+  .welcome-paragraphs p.mobile {
+  position: relative;
+  padding-left: 0px; /* Adjust the value as needed */
+  }
+
+  .regular-p.mobile {
+    text-align: center; /* Center the text content */
+    font-size: 20px;
+    color: var(--black);
+    text-indent: 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px var(--orange);
+    margin: 5px 0px 0px 0px;
+    padding: 0;
+  }
+
+    /* Remove padding for paragraphs within welcome-paragraphs */
+  .welcome-paragraphs p {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 25px;
+    font-size: large;
+  }
+
+  /* Remove pseudo-element for spacing */
+  .welcome-paragraphs p::before {
+    content: none;
+  }
+}
+
+#people {
+  display: flex;
+  margin: 75px 20px 20px 20px
+}
+
+#people .box {
+  flex: 1;
+  border: 1px solid var(--red);
+  background-color: var(--yellow);
+  margin: 20px;
+  height: auto;
+  width: auto;
+}
+
+@media (max-width: 740px) {
+  .photos.mobile {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+}
+
+/* Style the footer */
+#footer-container {
+  background-color: var(--orange);
+  color: var(--darkBlue);
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+

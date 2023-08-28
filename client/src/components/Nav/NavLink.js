@@ -53,54 +53,83 @@ function NavLink() {
 
   return (
     <>
-      <nav className="navbar">
-      <Link to="/" className={activeLink === 'home' ? 'active' : ''} onClick={() => handleNavLinkClick('home')}>Home</Link>
-        <Link to="/tab1" className={activeLink === 'tab1' ? 'active' : ''} onClick={() => handleNavLinkClick('tab1')}>People</Link>
-        <Link to="/tab2" className={activeLink === 'tab2' ? 'active' : ''} onClick={() => handleNavLinkClick('tab2')}>Animals</Link>
-        <Link to="/tab3" className={activeLink === 'tab3' ? 'active' : ''} onClick={() => handleNavLinkClick('tab3')}>Nature</Link>
-        <Link to="/tab4" className={activeLink === 'tab4' ? 'active' : ''} onClick={() => handleNavLinkClick('tab4')}>Oceans</Link>
-        <Link to="/tab5" className={activeLink === 'tab5' ? 'active' : ''} onClick={() => handleNavLinkClick('tab5')}>Cities</Link>
-        <Link to="/tab6" className={activeLink === 'tab6' ? 'active' : ''} onClick={() => handleNavLinkClick('tab6')}>Unusual</Link>
-        <Link to="/tab7" className={activeLink === 'tab7' ? 'active' : ''} onClick={() => handleNavLinkClick('tab7')}>Relaxing</Link>
-        <div className="search-bar">
-          <button>Search</button>
-          <input type="text" placeholder="Search..." />
-        </div>
-        <div className="login-buttons-container">
-          <button className="login-button" onClick={() => showPopup('loginPopup')}>
-            Log In
-          </button>
-          <button className="signup-button" onClick={() => showPopup('signupPopup')}>
-            Sign Up
-          </button>
-        </div>
-      </nav>
-      <div className={`popup ${activePopup ? 'active' : ''}`} id="loginPopup">
+    
+      <div id="navbar-container">
+        <section  id="navbar">
+          <ul className="navbar-links">
+            <li>
+              <Link to="/" className={activeLink === 'home' ? 'active' : ''} onClick={() => handleNavLinkClick('home')}>Home</Link>
+            </li>
+            <li>
+              <Link to="/tab1" className={activeLink === 'tab1' ? 'active' : ''} onClick={() => handleNavLinkClick('tab1')}>People</Link>
+            </li>
+            <li>
+              <Link to="/tab2" className={activeLink === 'tab2' ? 'active' : ''} onClick={() => handleNavLinkClick('tab2')}>Animals</Link>
+            </li>
+            <li>
+              <Link to="/tab3" className={activeLink === 'tab3' ? 'active' : ''} onClick={() => handleNavLinkClick('tab3')}>Nature</Link>
+            </li>
+            <li>
+              <Link to="/tab4" className={activeLink === 'tab4' ? 'active' : ''} onClick={() => handleNavLinkClick('tab4')}>Oceans</Link>
+            </li>
+            <li>
+              <Link to="/tab5" className={activeLink === 'tab5' ? 'active' : ''} onClick={() => handleNavLinkClick('tab5')}>Cities</Link>
+            </li>
+            <li>
+              <Link to="/tab6" className={activeLink === 'tab6' ? 'active' : ''} onClick={() => handleNavLinkClick('tab6')}>Unusual</Link>
+            </li>
+            <li>
+              <Link to="/tab7" className={activeLink === 'tab7' ? 'active' : ''} onClick={() => handleNavLinkClick('tab7')}>Relaxing</Link>
+            </li>
+          </ul>
+        </section>
+        
+        <div id="navbar-overlay"></div>
+
+        <section id="navbar-buttons">
+
+          <div className="navbar-search">
+            <button className="search-button">Search</button>
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div className="navbar-login-signup">
+            <button className="login-button" onClick={() => showPopup('loginPopup')}>
+              Log In
+            </button>
+            <button className="signup-button" onClick={() => showPopup('signupPopup')}>
+              Sign Up
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <section className={`popup ${activePopup ? 'active' : ''}`} id="loginPopup">
         <div className="popup-content">
           <h2>Log In</h2>
-            <input id="loginUsername" type="text" placeholder="Username" />
-            <input id="loginPassword" type="password" placeholder="Password" />
-            <button>Log In</button>
+          <input id="loginUsername" type="text" placeholder="Username" />
+          <input id="loginPassword" type="password" placeholder="Password" />
+          <button>Log In</button>
           <span className="close" onClick={() => closePopup('loginPopup')}>
             &times;
           </span>
         </div>
-      </div>
-      <div className={`popup ${activePopup ? 'active' : ''}`} id="signupPopup">
+      </section>
+      <section className={`popup ${activePopup ? 'active' : ''}`} id="signupPopup">
         <div className="popup-content">
           <h2>Sign Up</h2>
-            <input id="signUpFirstName" type="text" placeholder="FirstName" />
-            <input id="signUpLastName" type="text" placeholder="LastName" />
-            <input id="signUpEmail" type="email" placeholder="Email" />
-            <input id="signUpPassword" type="password" placeholder="Password" />
-            <button onClick={handleSubmit}>Sign Up</button>
+          <input id="signUpFirstName" type="text" placeholder="FirstName" />
+          <input id="signUpLastName" type="text" placeholder="LastName" />
+          <input id="signUpEmail" type="email" placeholder="Email" />
+          <input id="signUpPassword" type="password" placeholder="Password" />
+          <button onClick={handleSubmit}>Sign Up</button>
           <span className="close" onClick={() => closePopup('signupPopup')}>
             &times;
           </span>
         </div>
-      </div>
+      </section>
     </>
   );
+  
 }
 
 export default NavLink;
