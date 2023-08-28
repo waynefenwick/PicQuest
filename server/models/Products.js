@@ -8,18 +8,18 @@ const productSchema = new Schema({
     required: true,
     trim: true
   },
-  image: {
-    type: String
-  },
-  price: {
-    type: Number,
-    required: true,
-    min: 0.99
+  slug: {
+    type: String,
+    require: true
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
+  },
+  image: {
+    type: Buffer,
+    contentType: String
   }
 });
 
