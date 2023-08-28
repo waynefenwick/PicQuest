@@ -135,7 +135,6 @@ body, ul {
     justify-content: center;
   }
 
-
   #navbar-overlay {
     position: fixed;
     top: 0;
@@ -191,7 +190,6 @@ body, ul {
   background-color: var(--darkBlue);
 }
 
-/* Pop-up styles */
 .popup {
   display: none;
   position: fixed;
@@ -394,7 +392,6 @@ body, ul {
   }
 }
 
-/* Footer */
 #footer-container {
   background-color: var(--orange);
   color: var(--darkBlue);

@@ -60,7 +60,6 @@ function NavLink() {
     setIsLoggedIn(false);
   };
   
-
   return (
     <>
       <div id="navbar-container">
