@@ -6,8 +6,9 @@ import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 function NavLink() {
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn()); // Check if user is already logged in
   const [activePopup] = useState(null);
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
   const [activeLink, setActiveLink] = useState('home'); // Initialize with the default active link
   const [userFormData, setUserFormdata ] = useState({firstName: '',lastName: '',email: '',password: ''});
 
@@ -34,27 +35,35 @@ function NavLink() {
     let last = document.getElementById('signUpLastName').value;
     let email = document.getElementById('signUpEmail').value;
     let password = document.getElementById('signUpPassword').value;
-
+  
     setUserFormdata({
-      firstName:first,
-      lastName:last,
-      email:email,
-      password:password
+      firstName: first,
+      lastName: last,
+      email: email,
+      password: password
     });
-
+  
     const { data } = await addUser({
       variables: { ...userFormData }
     });
-
+  
     console.log(data);
     Auth.login(data.addUser.token);
+  
+    // After successful login, set isLoggedIn to true
+    setIsLoggedIn(true);
+  };
+  
 
-  }
-
+  const handleLogout = () => {
+    Auth.logout();
+    setIsLoggedIn(false);
+  };
+  
   return (
     <>
-    
       <div id="navbar-container">
+
         <section  id="navbar">
           <ul className="navbar-links">
             <li>
@@ -83,22 +92,29 @@ function NavLink() {
             </li>
           </ul>
         </section>
-        
-        <div id="navbar-overlay"></div>
+
+        <div id="navbar-overlay"></div>         
 
         <section id="navbar-buttons">
-
           <div className="navbar-search">
             <button className="search-button">Search</button>
             <input type="text" placeholder="Search..." />
           </div>
           <div className="navbar-login-signup">
-            <button className="login-button" onClick={() => showPopup('loginPopup')}>
-              Log In
-            </button>
-            <button className="signup-button" onClick={() => showPopup('signupPopup')}>
-              Sign Up
-            </button>
+            {isLoggedIn ? (
+              <button className="logout-button" onClick={handleLogout}>
+                Log Out
+              </button>
+            ) : (
+              <>
+                <button className="login-button" onClick={() => showPopup('loginPopup')}>
+                  Log In
+                </button>
+                <button className="signup-button" onClick={() => showPopup('signupPopup')}>
+                  Sign Up
+                </button>
+              </>
+            )}
           </div>
         </section>
       </div>
@@ -114,6 +130,7 @@ function NavLink() {
           </span>
         </div>
       </section>
+
       <section className={`popup ${activePopup ? 'active' : ''}`} id="signupPopup">
         <div className="popup-content">
           <h2>Sign Up</h2>
