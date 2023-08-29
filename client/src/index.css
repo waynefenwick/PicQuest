@@ -112,7 +112,7 @@ body, ul {
     align-items: center;
     left: 0;
     right: 0;
-    top: 30px;
+    top: 35px;
     padding: 1rem;
     background-color: var(--gray); 
     z-index: 1;
@@ -124,7 +124,6 @@ body, ul {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    overflow-x: scroll; 
     z-index: 2;
   }
 
@@ -388,7 +387,55 @@ body, ul {
   }
 
   .box {
-    margin: 10px
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px 0 10px 0;
+  }
+  
+  .image-container:hover .overlay {
+    opacity: 1;
+  }
+  
+  .icon {
+    font-size: 24px;
+    color: white;
+    margin: 0 5px;
+  }
+  .icon.star {
+    font-size: 24px;
+    color: white;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .icon:hover,
+  .icon.star.filled:hover {
+    color: var(--orange);
+  }
+  
+  .icon.star.filled {
+    color: var(--orange);
   }
 }
 
