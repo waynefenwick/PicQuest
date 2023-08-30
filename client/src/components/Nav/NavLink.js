@@ -10,7 +10,7 @@ function NavLink() {
   const [activePopup] = useState(null);
   const [addUser] = useMutation(ADD_USER);
   const [activeLink, setActiveLink] = useState('home'); // Initialize with the default active link
-  const [userFormData, setUserFormdata ] = useState({firstName: '',lastName: '',email: '',password: ''});
+  const [userFormData, setUserFormdata] = useState({ firstName: '', lastName: '', email: '', password: '' });
 
   const showPopup = (popupId) => {
     const popupElement = document.getElementById(popupId);
@@ -30,41 +30,53 @@ function NavLink() {
     setActiveLink(linkId);
   };
 
-  const handleSubmit = async () => {
-    let first = document.getElementById('signUpFirstName').value;
-    let last = document.getElementById('signUpLastName').value;
-    let email = document.getElementById('signUpEmail').value;
-    let password = document.getElementById('signUpPassword').value;
-  
-    setUserFormdata({
-      firstName: first,
-      lastName: last,
-      email: email,
-      password: password
+  const handleLogIn = async () => {
+    const mutationResponse = await login({
+      variables: {
+        email: userFormData.email,
+        password: userFormData.password,
+      },
     });
-  
-    const { data } = await addUser({
-      variables: { ...userFormData }
-    });
-  
-    console.log(data);
-    Auth.login(data.addUser.token);
-  
-    // After successful login, set isLoggedIn to true
+
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
     setIsLoggedIn(true);
+  }
+
+  const handleSubmit = async () => {
+    const mutationResponse = await addUser({
+      variables: {
+        firstName: userFormData.firstName,
+        lastName: userFormData.lastName,
+        email: userFormData.email,
+        password: userFormData.password,
+      },
+    });
+
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+    setIsLoggedIn(true);
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormdata({
+      ...userFormData,
+      [name]: value,
+    });
   };
-  
+
 
   const handleLogout = () => {
     Auth.logout();
     setIsLoggedIn(false);
   };
-  
+
   return (
     <>
       <div id="navbar-container">
 
-        <section  id="navbar">
+        <section id="navbar">
           <ul className="navbar-links">
             <li>
               <Link to="/" className={activeLink === 'home' ? 'active' : ''} onClick={() => handleNavLinkClick('home')}>Home</Link>
@@ -93,7 +105,7 @@ function NavLink() {
           </ul>
         </section>
 
-        <div id="navbar-overlay"></div>         
+        <div id="navbar-overlay"></div>
 
         <section id="navbar-buttons">
           <div className="navbar-search">
@@ -122,9 +134,9 @@ function NavLink() {
       <section className={`popup ${activePopup ? 'active' : ''}`} id="loginPopup">
         <div className="popup-content">
           <h2>Log In</h2>
-          <input id="loginUsername" type="text" placeholder="Username" />
-          <input id="loginPassword" type="password" placeholder="Password" />
-          <button>Log In</button>
+          <input name="email" id="email" type="text" placeholder="Email" onChange={handleChange} />
+          <input name="password" id="password" type="password" placeholder="Password" onChange={handleChange} />
+          <button onClick={handleLogIn}>Log In</button>
           <span className="close" onClick={() => closePopup('loginPopup')}>
             &times;
           </span>
@@ -134,10 +146,10 @@ function NavLink() {
       <section className={`popup ${activePopup ? 'active' : ''}`} id="signupPopup">
         <div className="popup-content">
           <h2>Sign Up</h2>
-          <input id="signUpFirstName" type="text" placeholder="FirstName" />
-          <input id="signUpLastName" type="text" placeholder="LastName" />
-          <input id="signUpEmail" type="email" placeholder="Email" />
-          <input id="signUpPassword" type="password" placeholder="Password" />
+          <input name="firstName" id="signUpFirstName" type="text" placeholder="FirstName" onChange={handleChange} />
+          <input name="lastName" id="signUpLastName" type="text" placeholder="LastName" onChange={handleChange} />
+          <input name="email" id="signUpEmail" type="email" placeholder="Email" onChange={handleChange} />
+          <input name="password" id="signUpPassword" type="password" placeholder="Password" onChange={handleChange} />
           <button onClick={handleSubmit}>Sign Up</button>
           <span className="close" onClick={() => closePopup('signupPopup')}>
             &times;
@@ -146,7 +158,7 @@ function NavLink() {
       </section>
     </>
   );
-  
+
 }
 
 export default NavLink;
