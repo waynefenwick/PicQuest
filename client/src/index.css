@@ -449,21 +449,83 @@ body, ul {
 }
 .image-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  padding: 20px;
 }
 
 .image-card {
   border: 1px solid #ccc;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-card:hover {
+  transform: scale(1.03);
 }
 
 .image-card img {
   max-width: 100%;
   height: auto;
 }
+
 .image-description {
   margin-top: 5px;
   font-size: 14px;
   color: #555;
+}
+
+.image-description p {
+  margin: 0;
+  padding: 0;
+}
+
+.image-container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 5px 0;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.download-button,
+.favorites-button {
+  color: var(--white);
+  background-color: var(--darkBlue);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.download-button:hover,
+.favorites-button:hover {
+  background-color: var(--orange);
+}
+.image-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
 }
