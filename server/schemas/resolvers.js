@@ -30,7 +30,7 @@ const resolvers = {
     },
     // Resolver for fetching images from the Unsplash API
     unsplashImages: async (parent, { category }) => {
-      const apiUrl = `https://api.unsplash.com/photos/random?count=10&query=${category}&client_id=${process.env.UNSPLASH_API_KEY}`;
+      const apiUrl = `https://api.unsplash.com/photos/random?count=30&query=${category}&client_id=${process.env.UNSPLASH_API_KEY}`;
     
       try {
         const response = await fetch(apiUrl);
