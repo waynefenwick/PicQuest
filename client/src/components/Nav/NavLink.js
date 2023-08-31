@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import { useMutation } from '@apollo/client';
-import { ADD_USER, LOGIN} from '../../utils/mutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_USER, LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { QUERY_UNSPLASH_IMAGES } from '../../utils/queries';
+import Search from '../Tabs/Search'; // Import the Search component
 
 function NavLink() {
-  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn()); // Check if user is already logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
   const [activePopup] = useState(null);
   const [addUser] = useMutation(ADD_USER);
   const [login] = useMutation(LOGIN);
-  const [activeLink, setActiveLink] = useState('home'); // Initialize with the default active link
-  const [userFormData, setUserFormdata] = useState({ firstName: '', lastName: '', email: '', password: '' });
+  const [activeLink, setActiveLink] = useState('home');
+  const [userFormData, setUserFormdata] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  const [searchQuery, setSearchQuery] = useState('');
 
   const showPopup = (popupId) => {
     const popupElement = document.getElementById(popupId);
@@ -42,7 +49,7 @@ function NavLink() {
     const token = mutationResponse.data.login.token;
     Auth.login(token);
     setIsLoggedIn(true);
-  }
+  };
 
   const handleSubmit = async () => {
     const mutationResponse = await addUser({
@@ -57,7 +64,7 @@ function NavLink() {
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
     setIsLoggedIn(true);
-  }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -67,12 +74,17 @@ function NavLink() {
     });
   };
 
+  const performSearch = () => {
+    if (searchQuery) {
+      console.log('Performing search for:', searchQuery);
+      // Perform the search or update state here
+    }
+  };
 
   const handleLogout = () => {
     Auth.logout();
     setIsLoggedIn(false);
   };
-
   return (
     <>
       <div id="navbar-container">
@@ -103,6 +115,9 @@ function NavLink() {
             <li>
               <Link to="/tab7" className={activeLink === 'tab7' ? 'active' : ''} onClick={() => handleNavLinkClick('tab7')}>Relaxing</Link>
             </li>
+            <li>
+              <Link to="/tab8" className={activeLink === 'tab8' ? 'active' : ''} onClick={() => handleNavLinkClick('tab8')}>Search</Link>
+            </li>
           </ul>
         </section>
 
@@ -110,8 +125,15 @@ function NavLink() {
 
         <section id="navbar-buttons">
           <div className="navbar-search">
-            <button className="search-button">Search</button>
-            <input type="text" placeholder="Search..." />
+          <button className="search-button" onClick={() => performSearch(searchQuery)}>
+              Search
+            </button>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+            />
           </div>
           <div className="navbar-login-signup">
             {isLoggedIn ? (
@@ -157,9 +179,8 @@ function NavLink() {
           </span>
         </div>
       </section>
+      <Search searchQuery={searchQuery} />
     </>
   );
-
 }
-
 export default NavLink;
