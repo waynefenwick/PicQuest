@@ -11,24 +11,6 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
-        }
-      }
-    }
-  }
-`;
-
 export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
@@ -47,5 +29,26 @@ export const ADD_USER = gql`
         _id
       }
     }
+  }
+`;
+export const ADD_FAVORITE = gql`
+  mutation addFavorite($imageId: ID!) {
+    addFavorite(imageId: $imageId) {
+      _id
+      userId
+      imageId
+    }
+  }
+`;
+
+export const REMOVE_FAVORITE = gql`
+  mutation removeFavorite($_id: ID!) {
+    removeFavorite(_id: $_id)
+  }
+`;
+
+export const LOGOUT = gql`
+  mutation logout {
+    logout
   }
 `;

@@ -1,70 +1,93 @@
 import { gql } from '@apollo/client';
-
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      name
-      description
-      price
-      quantity
-      image
-      category {
-        _id
-      }
-    }
-  }
-`;
-
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ProductInput]) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
-
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      name
-      description
-      price
-      quantity
-      category {
-        name
-      }
-    }
-  }
-`;
-
 export const QUERY_CATEGORIES = gql`
-  {
+  query getCategories {
     categories {
       _id
       name
     }
   }
 `;
-
 export const QUERY_USER = gql`
-  {
+  query getUser {
     user {
+      _id
       firstName
       lastName
-      orders {
+      email
+      favoriteImages {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
+        unsplashId
+        imageUrl
+        description
+        tags {
+          slug
+          title
         }
       }
     }
   }
 `;
+
+export const QUERY_FAVORITES = gql`
+  query getFavorites {
+    favorites {
+      _id
+      userId
+      imageId
+      timestamp
+    }
+  }
+`;
+
+export const QUERY_IMAGES = gql`
+  query getImages {
+    images {
+      _id
+      unsplashId
+      imageUrl
+      description
+      tags {
+        slug
+        title
+      }
+    }
+  }
+`;
+
+export const QUERY_CATEGORY = gql`
+  query getCategory($categoryId: ID!) {
+    category(_id: $categoryId) {
+      _id
+      name
+    }
+  }
+`;
+
+export const QUERY_IMAGE = gql`
+  query getImage($imageId: ID!) {
+    image(_id: $imageId) {
+      _id
+      unsplashId
+      imageUrl
+      description
+      tags {
+        slug
+        title
+      }
+    }
+  }
+`;
+export const QUERY_UNSPLASH_IMAGES = gql`
+  query getUnsplashImages($category: String!) {
+    unsplashImages(category: $category) {
+      _id
+      unsplashId
+      imageUrl
+      description
+      tags {
+        slug
+        title
+      }
+    }
+  }
+  `;

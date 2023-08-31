@@ -447,3 +447,23 @@ body, ul {
   bottom: 0;
   width: 100%;
 }
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.image-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.image-card img {
+  max-width: 100%;
+  height: auto;
+}
+.image-description {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+}
