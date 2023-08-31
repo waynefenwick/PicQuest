@@ -48,7 +48,7 @@ const resolvers = {
           unsplashId: imageData.id,
           imageUrl: imageData.urls.regular,
           description: imageData.description,
-          // ... Other image fields
+          
         }));
     
         return images;
@@ -101,12 +101,11 @@ const resolvers = {
       const response = await fetch(apiUrl);
       const imageData = await response.json();
 
-      // Save the image details to your database
+      // Save the image details to database
       const newImage = await Image.create({
         unsplashId: imageData.id,
         imageUrl: imageData.urls.regular,
         description: imageData.description,
-        // ... Other image fields
       });
 
       return newImage;
