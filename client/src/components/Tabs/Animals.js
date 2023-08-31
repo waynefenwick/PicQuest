@@ -12,12 +12,12 @@ function Animals() {
 
   const unsplashImages = data.unsplashImages;
 
-  const handleDownload = (imageUrl, altDescription, downloadUrl) => {
+  const handleDownload = (imageUrl, altDescription) => {
     const link = document.createElement('a');
     link.href = imageUrl;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.download = altDescription || downloadUrl;
+    link.download = altDescription || 'image';
     link.click();
   };
 
@@ -30,7 +30,7 @@ function Animals() {
             <div key={`${image.unsplashId}-${index}`} className="image-card">
               {image.imageUrl && (
                 <div className="image-buttons">
-                  <a href={image.imageUrl} download={image.alt_description || 'image'} target="_blank" rel="noopener noreferrer">
+                  <a href={image.imageUrl} onClick={(e) => { e.preventDefault(); handleDownload(image.imageUrl, image.alt_description); }}>
                     <img src={image.imageUrl} alt={image.alt_description} />
                   </a>
                   <p className="image-description">{image.description}</p>
