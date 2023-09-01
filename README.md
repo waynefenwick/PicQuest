@@ -1,6 +1,4 @@
-# Project-3-Under-Construction
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# PicQuest
 
 ## Description
 
